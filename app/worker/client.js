@@ -1,7 +1,7 @@
 const state={
   catalog:null,plan:null,day:0,view:location.pathname==="/admin"?"admin":"planner",admin:null,
   custom:[],editing:null,ingredientRows:1,error:"",notice:"",
-  input:{dailyBudget:180000,days:3,mealsPerDay:3,kcal:1800,protein:120,carbs:190,fat:55,style:"both",vegetarian:false,overrides:{}}
+  input:{dailyBudget:260000,days:3,mealsPerDay:3,kcal:1800,protein:120,carbs:190,fat:55,style:"both",vegetarian:false,overrides:{}}
 };
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -54,7 +54,7 @@ function result() {
     ${p.batches.length?`<div class="prep-banner"><div class="prep-icon">✳</div><div><strong>Gợi ý meal prep</strong><p>${p.batches.map(b=>`${esc(b.title)}: ${b.count} phần, khoảng ${b.minutes} phút cho một mẻ theo công thức mẫu`).join(" · ")}. Chia phần theo số bữa trước khi sử dụng.</p></div></div>`:""}
     <section class="shopping" id="shopping"><div class="section-heading"><div><div class="eyebrow">BƯỚC 03 · GIỎ ĐI CHỢ</div><h2>Gom nguyên liệu, mua theo gói</h2></div><span>${p.shopping.items.length} sản phẩm</span></div>
       <p>Cộng lượng cần dùng cho cả kỳ, sau đó làm tròn theo gói bán. Chi phí phần đã dùng khoảng <strong>${money(p.shopping.used)}</strong>; tiền trả tại quầy là <strong>${money(p.shopping.checkout)}</strong>.</p>
-      <div class="shopping-list">${p.shopping.items.map(x=>`<div class="shop-row"><div><strong>${esc(x.name)}</strong><small>${esc(x.category)} · cần ${fmt(x.requiredGrams)}g · gói ${fmt(x.packGrams)}g</small></div><div><span>${x.packs} gói</span><strong>${money(x.checkoutCost)}</strong></div></div>`).join("")}</div>
+      <div class="shopping-list">${p.shopping.items.map(x=>`<div class="shop-row"><div class="shop-info"><img class="shop-thumb" src="${safeImg(x.photo?.url)}" alt="Ảnh minh họa nhóm thực phẩm" loading="lazy"><div><strong>${esc(x.name)}</strong><small>${esc(x.category)} · cần ${fmt(x.requiredGrams)}g · gói ${fmt(x.packGrams)}g</small><small><a href="${safeImg(x.photo?.sourceUrl)}" target="_blank" rel="noopener noreferrer">Ảnh minh họa: ${esc(x.photo?.credit)}</a></small></div></div><div><span>${x.packs} gói</span><strong>${money(x.checkoutCost)}</strong></div></div>`).join("")}</div>
       <div class="shopping-total"><span>Tổng thanh toán ước tính</span><strong>${money(p.shopping.checkout)}</strong></div>
     </section>
   </section>`;

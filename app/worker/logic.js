@@ -13,7 +13,7 @@ function groceryFor(meals) {
     const packs=Math.ceil(requiredGrams/product.packGrams);
     return {productId,name:product.name,category:product.category,requiredGrams:Math.round(requiredGrams),
       packGrams:product.packGrams,packs,unitPrice:product.priceVnd,checkoutCost:packs*product.priceVnd,
-      usedCost:requiredGrams/product.packGrams*product.priceVnd,source:product.source};
+      usedCost:requiredGrams/product.packGrams*product.priceVnd,source:product.source,photo:shopPhoto(product)};
   }).filter(Boolean).sort((a,b)=>a.category.localeCompare(b.category)||a.name.localeCompare(b.name));
   return {items,checkout:items.reduce((a,i)=>a+i.checkoutCost,0),used:items.reduce((a,i)=>a+i.usedCost,0)};
 }

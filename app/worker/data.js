@@ -29,6 +29,23 @@ const photo = {
   oats:"https://images.unsplash.com/photo-1670843839025-d50924a51f31?auto=format&fit=crop&w=900&q=82",
   tofu:"https://images.unsplash.com/photo-1644527199925-a8a596b22ff7?auto=format&fit=crop&w=900&q=82",
 };
+// Category illustrations only. These are not retailer SKU photos.
+const SHOP_PHOTOS = {
+  meat:{url:"https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=180&q=75",credit:"JK Sloan / Unsplash",sourceUrl:"https://unsplash.com/photos/raw-chicken-meat-on-brown-wooden-chopping-board-9zLa37VNL38"},
+  grains:{url:"https://images.unsplash.com/photo-1770617474928-3c7554a51941?auto=format&fit=crop&w=180&q=75",credit:"Mustafa akın / Unsplash",sourceUrl:"https://unsplash.com/photos/a-close-up-view-of-uncooked-white-rice-grains-D8PSaH0o7kk"},
+  produce:{url:"https://images.unsplash.com/photo-1771659753573-e8498a262168?auto=format&fit=crop&w=180&q=75",credit:"Nina Weishaupt / Unsplash",sourceUrl:"https://unsplash.com/photos/fresh-vegetables-and-produce-displayed-at-a-market-nwpPqHpFge4"},
+  eggs:{url:"https://images.unsplash.com/photo-1660224286794-fc173fa9295c?auto=format&fit=crop&w=180&q=75",credit:"Erin Larson / Unsplash",sourceUrl:"https://unsplash.com/photos/a-carton-of-eggs-jIfVrNrhbI8"},
+  banana:{url:"https://images.unsplash.com/photo-1676495706236-f28daeef95d3?auto=format&fit=crop&w=180&q=75",credit:"Ian Talmacs / Unsplash",sourceUrl:"https://unsplash.com/photos/a-bunch-of-bananas-sitting-on-top-of-a-table-e49C0XDnZM0"},
+  dairy:{url:"https://images.unsplash.com/photo-1571212515416-fef01fc43637?auto=format&fit=crop&w=180&q=75",credit:"Unsplash",sourceUrl:"https://unsplash.com/photos/a-bowl-of-yogurt-with-a-spoon-in-it-NFHeBysjCTI"}
+};
+function shopPhoto(product) {
+  if(product.id==="egg") return SHOP_PHOTOS.eggs;
+  if(product.id==="banana") return SHOP_PHOTOS.banana;
+  if(product.id==="chicken") return SHOP_PHOTOS.meat;
+  if(product.category==="Sữa") return SHOP_PHOTOS.dairy;
+  if(product.category==="Ngũ cốc") return SHOP_PHOTOS.grains;
+  return SHOP_PHOTOS.produce;
+}
 const SAMPLE_RECIPES = [
   {id:"oat-yogurt",title:"Yến mạch sữa chua & chuối",slot:"breakfast",mode:"prep",servings:1,prepMinutes:8,cookMinutes:0,ingredients:[{productId:"yogurt",grams:180},{productId:"oats",grams:60},{productId:"banana",grams:100},{productId:"milk",grams:100},{productId:"peanut",grams:12}],steps:["Trộn yến mạch với sữa và sữa chua.","Thêm chuối cắt lát cùng bơ đậu phộng khi ăn."],image:photo.oats,imageCredit:"Ảnh minh họa: Joanna Stołowicz / Unsplash",sourceUrl:"https://unsplash.com/photos/a-bowl-of-yogurt-with-strawberries-on-top-Qze7zeiMz0A",status:"published",vegetarian:true},
   {id:"egg-toast",title:"Bánh mì trứng & rau",slot:"breakfast",mode:"cook",servings:1,prepMinutes:6,cookMinutes:8,ingredients:[{productId:"egg",grams:120},{productId:"bread",grams:90},{productId:"cucumber",grams:100},{productId:"yogurt",grams:80}],steps:["Làm chín trứng theo ý thích.","Ăn cùng bánh mì, dưa leo và sữa chua."],image:photo.oats,imageCredit:"Ảnh minh họa món sáng: Joanna Stołowicz / Unsplash",sourceUrl:"https://unsplash.com/photos/a-bowl-of-yogurt-with-strawberries-on-top-Qze7zeiMz0A",status:"published",vegetarian:true},

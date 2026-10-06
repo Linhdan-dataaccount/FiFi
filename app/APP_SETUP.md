@@ -6,7 +6,7 @@ FiFi plans meals for people who train around a daily nutrition target and an ave
 
 - User app at `/`: meal planner with 2 or 3 meals per day, daily kcal/protein/carbohydrate/fat goals, cook-now or meal-prep preference, recipe swaps, day-by-day results, and shopping list.
 - Admin app at `/admin`: authenticated editors can add, update, publish, unpublish, and delete custom recipes. Ingredients use product IDs and raw/as-sold grams. Published recipes require an HTTPS photo URL, image credit, and explicit permission confirmation.
-- The starter catalog contains 22 illustrative HCMC products and 8 standardized recipes in `worker/data.js`. Prices and nutrients are demo estimates, not live retailer or verified clinical data. UI labels this clearly.
+- The starter catalog contains 22 illustrative HCMC products and 8 standardized recipes in `worker/data.js`. Prices and nutrients are demo estimates, not live retailer or verified clinical data. Shopping list photos illustrate food groups, not exact retailer SKUs. UI labels this clearly.
 - Future work: connect an authorized Đi Chợ product feed, map retailer SKUs and pack sizes, reconcile nutrient values with USDA FoodData Central, add location/date freshness, then improve optimization and validation. Do not treat a publicly accessible endpoint as a licensed feed or expose an API key in the browser.
 
 ## Run and deploy
