@@ -1,1 +1,1 @@
-{"version":"7","dialect":"sqlite","entries":[{"idx":0,"version":"6","when":1791268800000,"tag":"0000_fifi_recipes","breakpoints":true}]}
+{"version":"7","dialect":"sqlite","entries":[{"idx":0,"version":"6","when":1791268800000,"tag":"0000_fifi_recipes","breakpoints":true},{"idx":1,"version":"6","when":1791277800000,"tag":"0001_fifi_catalog_users","breakpoints":true}]}

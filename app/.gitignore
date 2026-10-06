@@ -1,4 +1,2 @@
 dist/
 *.tar.gz
-.sites-runtime/
-.env*

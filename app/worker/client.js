@@ -170,4 +170,4 @@ async function init() {
   if(state.view==="admin") await loadAdmin();
   else {renderPlanner();await generate();}
 }
-init();
+// The interactive wizard and admin workspace are layered in client-plus.js.

@@ -59,13 +59,13 @@ const SAMPLE_RECIPES = [
 
 const productById = Object.fromEntries(PRODUCTS.map(p => [p.id,p]));
 const vnd = (n) => new Intl.NumberFormat("vi-VN").format(Math.round(n)) + "đ";
-function recipeMacro(r) {
+function recipeMacro(r,productMap=productById) {
   return r.ingredients.reduce((m,i) => {
-    const p=productById[i.productId]; if(!p) return m;
+    const p=productMap[i.productId]; if(!p) return m;
     const k=i.grams/100/r.servings;
     return {kcal:m.kcal+p.nutrition.kcal*k,protein:m.protein+p.nutrition.protein*k,carbs:m.carbs+p.nutrition.carbs*k,fat:m.fat+p.nutrition.fat*k};
   },{kcal:0,protein:0,carbs:0,fat:0});
 }
-function recipeConsumedCost(r) {
-  return r.ingredients.reduce((sum,i)=>sum+(productById[i.productId]?.priceVnd??0)*i.grams/(productById[i.productId]?.packGrams??1)/r.servings,0);
+function recipeConsumedCost(r,productMap=productById) {
+  return r.ingredients.reduce((sum,i)=>sum+(productMap[i.productId]?.priceVnd??0)*i.grams/(productMap[i.productId]?.packGrams??1)/r.servings,0);
 }

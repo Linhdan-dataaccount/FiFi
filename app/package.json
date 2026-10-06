@@ -1,9 +1,11 @@
 {
-  "name": "sites-worker-esm-starter",
+  "name": "fifi-meal-planner",
   "private": true,
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "validate": "node scripts/validate-artifact.mjs"
+    "validate": "node scripts/validate-artifact.mjs",
+    "smoke": "node scripts/smoke-test.mjs",
+    "preview": "node scripts/preview-server.mjs"
   }
 }
